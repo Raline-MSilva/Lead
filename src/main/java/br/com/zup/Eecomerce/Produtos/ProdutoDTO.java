@@ -1,4 +1,4 @@
-package br.com.zup.Eecomerce.Dtos;
+package br.com.zup.Eecomerce.Produtos;
 
 public class ProdutoDTO {
     private String nomeProduto;

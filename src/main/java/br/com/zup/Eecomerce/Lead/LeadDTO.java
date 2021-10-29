@@ -1,4 +1,6 @@
-package br.com.zup.Eecomerce.Dtos;
+package br.com.zup.Eecomerce.Lead;
+
+import br.com.zup.Eecomerce.Produtos.ProdutoDTO;
 
 public class LeadDTO {
     private String nome;
