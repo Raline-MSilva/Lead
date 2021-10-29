@@ -1,7 +1,7 @@
 package br.com.zup.Eecomerce.Lead;
 
-import br.com.zup.Eecomerce.Lead.LeadDTO;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,11 @@ public class LeadService {
     //cadastrar lead
     public void cadastrarLead(LeadDTO lead) {
         leads.add(lead);
+    }
+
+    //exibir os leads cadastrados
+    public List<LeadDTO> exibirLeads() {
+        return leads;
     }
 
 }
