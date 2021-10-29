@@ -4,6 +4,7 @@ public class LeadDTO {
     private String nome;
     private String email;
     private String telefone;
+    private ProdutoDTO produtos;
 
     public LeadDTO() {
 
