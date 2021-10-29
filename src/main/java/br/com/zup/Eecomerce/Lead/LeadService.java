@@ -1,6 +1,8 @@
 package br.com.zup.Eecomerce.Lead;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.ArrayList;
@@ -19,6 +21,16 @@ public class LeadService {
     //exibir os leads cadastrados
     public List<LeadDTO> exibirLeads() {
         return leads;
+    }
+
+    //nao cadastrar leads com o mesmo email
+    public void pesquisarEmail(LeadDTO lead) {
+        for (LeadDTO objetoReferencia : leads) {
+            if (objetoReferencia.getEmail().equals(lead.getEmail())) {
+                throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+            }
+        }
+        leads.add(lead);
     }
 
 }
