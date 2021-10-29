@@ -2,20 +2,16 @@ package br.com.zup.Eecomerce.Lead;
 
 import br.com.zup.Eecomerce.Produtos.ProdutoDTO;
 
+import java.util.List;
+
 public class LeadDTO {
     private String nome;
     private String email;
     private String telefone;
-    private ProdutoDTO produtos;
+    private List<ProdutoDTO> produtos;
 
     public LeadDTO() {
 
-    }
-
-    public LeadDTO(String nome, String email, String telefone) {
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -40,5 +36,13 @@ public class LeadDTO {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public List<ProdutoDTO> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<ProdutoDTO> produtos) {
+        this.produtos = produtos;
     }
 }

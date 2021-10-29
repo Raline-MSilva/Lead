@@ -11,11 +11,6 @@ import java.util.List;
 public class LeadService {
     private List<LeadDTO> leads = new ArrayList<>();
 
-    //exibir os leads
-    public List<LeadDTO> exibirLeads() {
-        return leads;
-    }
-
     //cadastrar lead
     public void cadastrarLead(LeadDTO lead) {
         leads.add(lead);
