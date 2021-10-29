@@ -30,7 +30,7 @@ public class LeadService {
                 throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
             }
         }
-        leads.add(lead);
+        cadastrarLead(lead);
     }
 
 }
