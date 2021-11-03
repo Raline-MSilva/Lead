@@ -16,7 +16,7 @@ public class LeadService {
 
     //cadastrar lead
     public void cadastrarLead(LeadDTO lead) {
-        if (pesquisarEmailRepetido(lead) == true){
+        if (pesquisarEmailRepetido(lead) == true) {
             compararListaProdutos(lead);
             atualizarProdutos(lead);
         } else {
@@ -41,9 +41,9 @@ public class LeadService {
     }
 
     //percorrer lista e achar leads com email iguais
-    public LeadDTO buscarLead (String email){
-        for (LeadDTO objetoReferencia : leads){
-            if (objetoReferencia.getEmail().equals(email)){
+    public LeadDTO buscarLead(String email) {
+        for (LeadDTO objetoReferencia : leads) {
+            if (objetoReferencia.getEmail().equals(email)) {
                 return objetoReferencia;
             }
         }
@@ -51,11 +51,11 @@ public class LeadService {
     }
 
     //nao cadastrar produtos iguais no mesmo email
-    public void compararListaProdutos (LeadDTO leadNovo){
+    public void compararListaProdutos(LeadDTO leadNovo) {
         LeadDTO leadAntigo = buscarLead(leadNovo.getEmail());
-        for (ProdutoDTO produtosNovos : leadNovo.getProdutos()){
-            for (ProdutoDTO produtosAntigos : leadAntigo.getProdutos()){
-                if (produtosNovos.equals(produtosAntigos)){
+        for (ProdutoDTO produtosNovos : leadNovo.getProdutos()) {
+            for (ProdutoDTO produtosAntigos : leadAntigo.getProdutos()) {
+                if (produtosNovos.equals(produtosAntigos)) {
                     throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
                 }
             }
@@ -63,9 +63,9 @@ public class LeadService {
     }
 
     //atualiza produtos novos na lista de produtos ja cadastrados
-    public void atualizarProdutos (LeadDTO leadNovo){
+    public void atualizarProdutos(LeadDTO leadNovo) {
         LeadDTO leadAntigo = buscarLead(leadNovo.getEmail());
-        for (ProdutoDTO produtoReferencia : leadNovo.getProdutos()){
+        for (ProdutoDTO produtoReferencia : leadNovo.getProdutos()) {
             leadAntigo.getProdutos().add(produtoReferencia);
         }
     }
