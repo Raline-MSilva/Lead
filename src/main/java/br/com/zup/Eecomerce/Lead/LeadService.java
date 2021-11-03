@@ -1,5 +1,6 @@
 package br.com.zup.Eecomerce.Lead;
 
+import br.com.zup.Eecomerce.Produtos.ProdutoDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -42,6 +43,18 @@ public class LeadService {
             }
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
+    //nao cadastrar produtos iguais no mesmo email
+    public void compararListaProdutos (LeadDTO leadNovo){
+        LeadDTO leadAntigo = buscarLead(leadNovo.getEmail());
+        for (ProdutoDTO produtosNovos : leadNovo.getProdutos()){
+            for (ProdutoDTO produtosAntigos : leadAntigo.getProdutos()){
+                if (produtosNovos.equals(produtosAntigos)){
+                    throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+                }
+            }
+        }
     }
 
 }
