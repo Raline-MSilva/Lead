@@ -16,7 +16,12 @@ public class LeadService {
 
     //cadastrar lead
     public void cadastrarLead(LeadDTO lead) {
-        leads.add(lead);
+        if (pesquisarEmailRepetido(lead) == true){
+            compararListaProdutos(lead);
+            atualizarProdutos(lead);
+        } else {
+            leads.add(lead);
+        }
     }
 
     //exibir os leads cadastrados
