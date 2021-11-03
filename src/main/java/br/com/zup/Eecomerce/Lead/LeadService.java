@@ -57,4 +57,12 @@ public class LeadService {
         }
     }
 
+    //atualiza produtos novos na lista de produtos ja cadastrados
+    public void atualizarProdutos (LeadDTO leadNovo){
+        LeadDTO leadAntigo = buscarLead(leadNovo.getEmail());
+        for (ProdutoDTO produtoReferencia : leadNovo.getProdutos()){
+            leadAntigo.getProdutos().add(produtoReferencia);
+        }
+    }
+
 }
