@@ -24,13 +24,24 @@ public class LeadService {
     }
 
     //nao cadastrar leads com o mesmo email
-    public void pesquisarEmail(LeadDTO lead) {
+    public boolean pesquisarEmailRepetido(LeadDTO lead) {
+        boolean emailRepetido = false;
         for (LeadDTO objetoReferencia : leads) {
             if (objetoReferencia.getEmail().equals(lead.getEmail())) {
-                throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+                emailRepetido = true;
             }
         }
-        cadastrarLead(lead);
+        return emailRepetido;
+    }
+
+    //percorrer lista e achar leads com email iguais
+    public LeadDTO buscarLead (String email){
+        for (LeadDTO objetoReferencia : leads){
+            if (objetoReferencia.getEmail().equals(email)){
+                return objetoReferencia;
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
 }
